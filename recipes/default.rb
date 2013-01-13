@@ -43,3 +43,7 @@ end
 service "couchpotato" do
   action :start
 end
+
+bash "update-rc.d" do
+  code "update-rc.d couchpotato defaults"
+end
