@@ -28,7 +28,7 @@ automation_urls_use =
 automation_urls =
 
 [kinepolis]
-automation_enabled = False
+automation_enabled = <%= node["couchpotato"]["kinepolis_enabled"] %>
 
 [moviemeter]
 automation_enabled = False
@@ -70,10 +70,10 @@ password =
 enabled =
 
 [newznab]
-use = 0,0,0,0
-api_key = ,,,
-enabled =
-host = nzb.su,dognzb.cr,nzbs.org,https://index.nzbgeek.info
+use = <%= node["couchpotato"]["newznab"]["use"] %>
+api_key = <%= node["couchpotato"]["newznab"]["api_key"] %>
+enabled =<%= node["couchpotato"]["newznab"]["enabled"] %>
+host = <%= node["couchpotato"]["newznab"]["host"] %>
 
 [nzbclub]
 enabled =
@@ -258,10 +258,10 @@ access_token_secret =
 direct_message = 0
 
 [automation]
-rating = 7.0
-votes = 1000
-hour = 12
-year = 2011
+rating = <%= node["couchpotato"]["automation"]["rating"] %>
+votes = <%= node["couchpotato"]["automation"]["votes"] %>
+hour = <%= node["couchpotato"]["automation"]["hour"] %>
+year = <%= node["couchpotato"]["automation"]["year"] %>
 
 [manage]
 cleanup = True
