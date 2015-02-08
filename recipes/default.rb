@@ -1,5 +1,10 @@
 include_recipe "git::default"
 
+user node["couchpotato"]["user"] do
+  home "/home/#{node["couchpotato"]["user"]}"
+  shell "/bin/false"
+end
+
 directory  "/var/run/couchpotato" do
   owner node["couchpotato"]["user"]
   group node["couchpotato"]["group"]
@@ -30,6 +35,13 @@ template "/etc/init.d/couchpotato" do
     mode 0755
     owner "root"
     group "root"
+end
+
+directory "/home/#{node['couchpotato']['user']}/.couchpotato/" do
+  owner node["couchpotato"]["user"]
+  group node["couchpotato"]["group"]
+  recursive true
+  action :create
 end
 
 template "/home/#{node['couchpotato']['user']}/.couchpotato/settings.conf" do
